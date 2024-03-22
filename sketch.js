@@ -1,7 +1,7 @@
 //#region main
 function setup() {
   createCanvas(1000, 112);
-  // background(220);
+  // background(200);
 
   escappStart(80);
 
