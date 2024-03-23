@@ -1,14 +1,13 @@
 //#region main
 
 function setup() {
-  createCanvas(1000, 112);
-  
+  createCanvas(300, 100);
   escappStart(80);
 
-  let puzzle1 = createPuzzle(20, 550, "The key to escape is to look up and count.");
+  let puzzle1 = createPuzzle(100, 550, "The key to escape is to look up and count.");
   puzzle1.button.mousePressed(() => solve(1, puzzle1.input.value()));
 
-  let puzzle2 = createPuzzle(20, 650, "The Bishop is praying. Where is he?");
+  let puzzle2 = createPuzzle(100, 650, "The Bishop is praying. Where is he?");
   puzzle2.button.mousePressed(() => solve(2, puzzle2.input.value()));
 
   textAlign(CENTER);

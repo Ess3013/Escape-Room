@@ -15,25 +15,6 @@
 
 <body>
   <!-- <script type="module" src = "gemini.js"></script> -->
-  <input type="text" id="geminiInput" value="Hello">
-  <script>
-    const module = {};
-    var searchInput = document.getElementById("geminiInput");
-    var inputValue = searchInput.value;
-  </script>
-  <script type="module">
-    import {run} from "./gemini.js";
-    module.runnn = run;
-  </script>
-
-
-
-
-  <button onclick="module.runnn(document.getElementById('geminiInput').value)">Ask Gemini</button>
-  
-
-  <script src="sketch.js" defer></script>
-
   <div class="sketchfab-embed-wrapper">
     <iframe title="Old Orthodox Church in Suzdal (inside & outside)" frameborder="0" allowfullscreen
       mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
@@ -42,6 +23,30 @@
       src="https://sketchfab.com/models/482bb6ceb53a413193c36e560885262e/embed?annotations_visible=1&annotation=1&ui_theme=dark">
     </iframe>
   </div>
+
+  <input type="text" id="geminiInput" value="Hello">
+  <script>
+    const module = {};
+  </script>
+
+  <script type="module">
+    import { run } from "./gemini.js";
+    module.run = run;
+  </script>
+
+
+
+
+  <button id="geminiButton"
+    onclick="module.run(document.getElementById('geminiInput').value)
+  .then((data)=>{let geminiResponse=data; print(geminiResponse); document.getElementById('myText').innerHTML = geminiResponse;})">Ask
+    Gemini</button>
+  <!-- <button id="geminiButton" onclick="geminiResponse = module.run(document.getElementById('geminiInput').value)">Ask Gemini</button> -->
+  <!-- <button onclick="geminiResponse.then((data)=>console.log(data)); document.getElementById('myText').innerHTML = geminiResponse;">Load</button> -->
+
+  <script src="sketch.js" defer></script>
+
+  <p><span id="myText"></span></p>
 </body>
 
 </html>
