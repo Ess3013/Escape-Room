@@ -41,11 +41,6 @@ function createPuzzle(x, y, prompt) {
   let puzzle = createElement("h3", prompt);
   let input = createInput();
   let button = createButton("submit");
-  // input.position(x, y);
-
-  // button.position(input.x + input.width, y);
-
-  // puzzle.position(x, y - 2 * input.height);
 
   return { input: input, button: button, puzzle: puzzle };
 }
