@@ -38,14 +38,14 @@ function escappStart(roomNumber) {
 }
 
 function createPuzzle(x, y, prompt) {
-  let input = createInput();
-  input.position(x, y);
-
-  let button = createButton("submit");
-  button.position(input.x + input.width, y);
-
   let puzzle = createElement("h3", prompt);
-  puzzle.position(x, y - 2 * input.height);
+  let input = createInput();
+  let button = createButton("submit");
+  // input.position(x, y);
+
+  // button.position(input.x + input.width, y);
+
+  // puzzle.position(x, y - 2 * input.height);
 
   return { input: input, button: button, puzzle: puzzle };
 }
