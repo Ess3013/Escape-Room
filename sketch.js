@@ -1,7 +1,7 @@
 //#region main
 
 function setup() {
-  createCanvas(300, 100);
+  createCanvas(,);
   escappStart(80);
 
   let puzzle1 = createPuzzle(100, 550, "The key to escape is to look up and count.");
