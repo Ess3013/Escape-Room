@@ -27,6 +27,7 @@
   <input type="text" id="geminiInput" value="Hello">
   <script>
     const module = {};
+    let geminiResponse;
   </script>
 
   <script type="module">
@@ -39,10 +40,8 @@
 
   <button id="geminiButton"
     onclick="module.run(document.getElementById('geminiInput').value)
-  .then((data)=>{let geminiResponse=data; print(geminiResponse); document.getElementById('myText').innerHTML = geminiResponse;})">Ask
+  .then((data)=>{geminiResponse=data; print(geminiResponse); document.getElementById('myText').innerHTML = geminiResponse;})">Ask
     Gemini</button>
-  <!-- <button id="geminiButton" onclick="geminiResponse = module.run(document.getElementById('geminiInput').value)">Ask Gemini</button> -->
-  <!-- <button onclick="geminiResponse.then((data)=>console.log(data)); document.getElementById('myText').innerHTML = geminiResponse;">Load</button> -->
 
   <script src="sketch.js" defer></script>
 
