@@ -22,24 +22,28 @@ const mainSketch = (p) => {
     p.noCanvas();
     escappStart(80);
     p.createElement("h3", "Solve the puzzles to escape.");
-    
+
     let puzzle1 = createPuzzle("The key to escape is to look up and count.");
-    // puzzle1.button.mousePressed(() => p.createSpan(solve(1, puzzle1.input.value())) );
     puzzle1.button.mousePressed(() => solve(1, puzzle1.input.value(), puzzle1.message)) //Check thisssssssss
 
     let puzzle2 = createPuzzle("The Bishop is praying. Where is he?");
-    puzzle2.button.mousePressed(() => solve(2, puzzle2.input.value()));
+    puzzle2.button.mousePressed(() => solve(2, puzzle2.input.value(), puzzle2.message));
 
     p.createElement("h3", "Ask Gemini if you'd like some help");
-    let geminiInput = p.createInput();
-    let geminiButton = p.createButton("Ask Gemini");
-    let geminiResponse = p.createP();
-    geminiButton.mousePressed(() =>
-      run(geminiInput.value()).then((data) => geminiResponse.html(data))
+    
+    let gemini =
+    {
+      input: p.createInput(),
+      button: p.createButton("Ask Gemini"),
+      response: p.createP()
+    }
+
+    gemini.button.mousePressed(() =>
+      run(gemini.input.value()).then((data) => gemini.response.html(data))
     );
   };
 
-  p.draw = () => {};
+  p.draw = () => { };
 
   function escappStart(roomNumber) {
     const URI = "https://escapp.es/api/escapeRooms/" + roomNumber + "/start";
@@ -66,7 +70,7 @@ const mainSketch = (p) => {
     // input.position(x, y);
 
     let button = p.createButton("submit");
-    
+
     let message = p.createSpan();
     // button.position(input.x + input.width, y);
 
@@ -90,7 +94,7 @@ const mainSketch = (p) => {
       },
     })
       .then((res) => res.json())
-      .then((res) => {console.log(res.msg); span.html(res.msg)});
+      .then((res) => { console.log(res.msg); span.html(res.msg) });
   }
 };
 
