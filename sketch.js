@@ -27,15 +27,16 @@ const mainSketch = (p) => {
     var email = p.select('#email');
     var password = p.select('#pwd');
     p.createP();
-    var signIn = p.createButton('submit');
+    // var signIn = p.createButton('submit');
+    var signIn = p.select('#submit');
     signIn.mousePressed(()=>escappStart(80, email, password))
     p.createElement("h3", "Solve the puzzles to escape.");
 
     let puzzle1 = createPuzzle("The key to escape is to look up and count.");
-    puzzle1.button.mousePressed(() => solve(1, puzzle1.input.value(), puzzle1.message)) //Check thisssssssss
+    puzzle1.button.mousePressed(() => solve(1, puzzle1.input.value(), puzzle1.message, email, password)) //Check thisssssssss
 
     let puzzle2 = createPuzzle("The Bishop is praying now. Where is he?");
-    puzzle2.button.mousePressed(() => solve(2, puzzle2.input.value(), puzzle2.message));
+    puzzle2.button.mousePressed(() => solve(2, puzzle2.input.value(), puzzle2.message, email, password));
 
     p.createElement('hr');
     p.createElement("h3", "You can ask Gemini if you need some help");
@@ -86,15 +87,15 @@ const mainSketch = (p) => {
     return { input: input, button: button, message: message, puzzle: puzzle };
   }
 
-  function solve(puzzleNum, input, text) {
+  function solve(puzzleNum, input, text, email, password) {
     const solution = input;
     const URI =
       "https://escapp.es/api/escapeRooms/80/puzzles/" + puzzleNum + "/submit";
     fetch(URI, {
       method: "POST",
       body: JSON.stringify({
-        email: "eslamessam3013@gmail.com",
-        password: "ziCY8AgsX7u3NSh",
+        email: email.value(),
+        password: password.value(),
         solution: solution,
       }),
       headers: {
